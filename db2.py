@@ -47,7 +47,7 @@ def insert(provinceList, cityList):
     provinceTuple=tuple(provinceList)
     cityTuple=tuple(cityList)
     cursor = db.cursor()
-    sql = "insert into info_new values (%s,%s,%s,%s,%s,%s,%s,%s) "
+    sql = "insert into info values (%s,%s,%s,%s,%s,%s,%s,%s) "
     try:
         cursor.executemany(sql,provinceTuple)
         print("插入成功")
@@ -64,7 +64,7 @@ def insert(provinceList, cityList):
         db.rollback()
     cursor.close()
 def total():
-    sql= "select * from info_new"
+    sql= "select * from info"
     cursor = db.cursor()
     try:
         cursor.execute(sql)
