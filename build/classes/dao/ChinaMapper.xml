@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ChinaMapper">
+    <select id="getListByBETime" resultType="china" parameterType="map">select * from info<where>
+        <if test="btime!=null and etime!=null and btime!='' and etime!='' ">
+            time between #{btime} and #{etime}
+        </if>
+    </where>
+  </select>
+    <select id="getListByTime" resultType="china" parameterType="map"> select * from info where cityName is null and time=#{time}</select>
+    <select id="getList" resultType="china">select * from info</select>
+</mapper>

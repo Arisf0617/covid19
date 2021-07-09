@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--引入外部文件-->
+    <properties resource="db.properties">
+<!--        <property name="username" value="root"/>-->
+    </properties>
+    <settings>
+        <!--标准日志工厂-->
+        <!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+        <setting name="logImpl" value="LOG4J"/>
+
+    </settings>
+    <!--实体类起别名-->
+    <typeAliases>
+        <package name="bean"/>
+        <!--        <typeAlias type="com.bean.User" alias="User"></typeAlias>-->
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- 使用相对于类路径的资源引用 -->
+    <mappers>
+        <mapper resource="dao/ChinaMapper.xml"/>
+    </mappers>
+</configuration>
